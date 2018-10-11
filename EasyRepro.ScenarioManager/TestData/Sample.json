@@ -1,0 +1,19 @@
+﻿{
+  "Name": "Create a new account record",
+  "Description": "Create a new account record using EasyRepro",
+  "Area": "Sales",
+  "SubArea": "Accounts",
+  "View": "Active Accounts",
+  "Commands": [
+    {
+      "Name": "New",
+      "Description": "Click New button from the command bar and fill the data",
+      "Data": "test data"
+    },
+    {
+      "Name": "Save & Close",
+      "Description": "Click Save & Close from the command bar",
+      "Data": ""
+    }
+  ]
+}
