@@ -34,7 +34,12 @@ namespace EasyRepro.ScenarioManager.UnitTest
     {
       ""Name"": ""New"",
       ""Description"": ""Click New button from the command bar and fill the data"",
-      ""Data"": ""test data""
+      ""Data"": [
+        {
+          ""Attribute"": ""name"",
+          ""Value"":  ""Test Account""
+        }
+      ]
     },
     {
       ""Name"": ""Save & Close"",
@@ -49,6 +54,7 @@ namespace EasyRepro.ScenarioManager.UnitTest
             Assert.IsNotEmpty(result.Name);
 
             Assert.AreEqual("Create a new account record", result.Name);
+            Assert.AreEqual("Test Account", result.Commands[0].Data[0].Value);
         }
 
         [TestCase(@"C:\Repository\Git\EasyRepro\EasyRepro.ScenarioManager\TestData\Sample.json")]
@@ -61,6 +67,7 @@ namespace EasyRepro.ScenarioManager.UnitTest
             Assert.IsNotEmpty(result.Name);
 
             Assert.AreEqual("Create a new account record", result.Name);
+            Assert.AreEqual("Test Account", result.Commands[0].Data[0].Value);
         }
     }
 }

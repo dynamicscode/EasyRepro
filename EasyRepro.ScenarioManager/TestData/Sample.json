@@ -8,7 +8,12 @@
     {
       "Name": "New",
       "Description": "Click New button from the command bar and fill the data",
-      "Data": "test data"
+      "Data": [
+        {
+          "Attribute": "name",
+          "Value":  "Test Account"
+        }
+      ]
     },
     {
       "Name": "Save & Close",
