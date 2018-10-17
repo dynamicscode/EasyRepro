@@ -40,12 +40,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
-                    var checkBox = input.FindElement(By.TagName("input"));
-                    var bCheck = checkBox.GetAttribute("value") == "1";
-
-                    if (bCheck != check)
+                    try
                     {
-                        checkBox.Click();
+                        var checkBox = input.FindElement(By.TagName("input"));
+                        var bCheck = checkBox.GetAttribute("value") == "1";
+
+                        if (bCheck != check)
+                        {
+                            checkBox.Click();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        var div = driver.FindElement(By.Id(field));
+                        var td = div.FindElement(By.XPath(".."));
+                        td.Click();
                     }
                 }
                 else

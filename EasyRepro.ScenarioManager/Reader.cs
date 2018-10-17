@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-using static EasyRepro.ScenarioManager.Model;
+using EasyRepro.ScenarioManager.Model;
+using Microsoft.Dynamics365.UIAutomation.Browser;
 
 namespace EasyRepro.ScenarioManager
 {
@@ -11,16 +12,26 @@ namespace EasyRepro.ScenarioManager
 
         }
 
-        public Scenario ParseFromFile(string jsonFile)
+        public D365Config ParseD365Config(string filePath)
         {
-            string jsonData = File.ReadAllText(jsonFile);
-
-            return Parse(jsonData);
+            return ParseFromFile<D365Config>(filePath);
         }
 
-        public Scenario Parse(string jsonData)
+        public Scenario ParseTestDataFromFile(string filePath)
         {
-            return JsonConvert.DeserializeObject<Scenario>(jsonData);
+            return ParseFromFile<Scenario>(filePath);
+        }
+
+        public T ParseFromFile<T>(string filePath)
+        {
+            string jsonData = File.ReadAllText(filePath);
+
+            return Parse<T>(jsonData);
+        }
+
+        public T Parse<T>(string jsonData)
+        {
+            return JsonConvert.DeserializeObject<T>(jsonData);
         }
     }
 }

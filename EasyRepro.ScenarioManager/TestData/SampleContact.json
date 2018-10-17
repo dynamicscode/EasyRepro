@@ -1,0 +1,60 @@
+﻿{
+  "Name": "Create a new contact record",
+  "Description": "Create a new contact record using EasyRepro",
+  "Entity": "Account",
+  "Area": "Sales",
+  "SubArea": "Contacts",
+  "View": "",
+  "Commands": [
+    {
+      "Name": "New",
+      "Description": "Click New button from the command bar and fill the data",
+      "Data": [
+        {
+          "Type": "composite",
+          "Name": "fullname",
+          "Fields": [
+            {
+              "Id": "firstname",
+              "Value": "Test"
+            },
+            {
+              "Id": "lastname",
+              "Value": "Demo Persona"
+            }
+          ]
+        },
+        {
+          "Type": "date",
+          "Name": "birthdate",
+          "Value": "11/1/1980"
+        },
+        {
+          "Type": "optionset",
+          "Name": "preferredcontactmethodcode",
+          "Value": "Email"
+        },
+        {
+          "Type": "twooption",
+          "Name": "donotemail",
+          "Value": "true"
+        }
+      ]
+    },
+    {
+      "Name": "Save & Close",
+      "Description": "Click Save & Close from the command bar",
+      "Data": []
+    },
+    {
+      "Name": "Delete",
+      "Description": "Search a created contact",
+      "Data": [
+        {
+          "Name": "name",
+          "Value": "Test Demo Persona"
+        }
+      ]
+    }
+  ]
+}

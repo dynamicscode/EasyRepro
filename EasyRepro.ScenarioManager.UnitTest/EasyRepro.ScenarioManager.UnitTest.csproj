@@ -10,11 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EasyRepro.ScenarioManager.UnitTest</RootNamespace>
     <AssemblyName>EasyRepro.ScenarioManager.UnitTest</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\EasyRepro.ScenarioManager\EasyRepro.ScenarioManager.csproj">
       <Project>{c1e211f0-cb53-433f-9d4f-0fa21c586c94}</Project>
       <Name>EasyRepro.ScenarioManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Dynamics365.UIAutomation.Api\Microsoft.Dynamics365.UIAutomation.Api.csproj">
+      <Project>{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}</Project>
+      <Name>Microsoft.Dynamics365.UIAutomation.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

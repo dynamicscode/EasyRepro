@@ -1,6 +1,7 @@
 ﻿{
   "Name": "Create a new account record",
   "Description": "Create a new account record using EasyRepro",
+  "Entity": "Account",
   "Area": "Sales",
   "SubArea": "Accounts",
   "View": "Active Accounts",
@@ -10,15 +11,31 @@
       "Description": "Click New button from the command bar and fill the data",
       "Data": [
         {
-          "Attribute": "name",
-          "Value":  "Test Account"
+          "Type": "text",
+          "Name": "name",
+          "Value": "Test Account 12345"
+        },
+        {
+          "Type": "text",
+          "Name": "telephone1",
+          "Value": "05795585456"
         }
       ]
     },
     {
       "Name": "Save & Close",
       "Description": "Click Save & Close from the command bar",
-      "Data": ""
+      "Data": []
+    },
+    {
+      "Name": "Delete",
+      "Description": "Delete a created account",
+      "Data": [
+        {
+          "Name": "name",
+          "Value":  "Test Account 12345"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using EasyRepro.ScenarioManager.Model;
+using NUnit.Framework;
 
 namespace EasyRepro.ScenarioManager.UnitTest
 {
@@ -16,7 +17,7 @@ namespace EasyRepro.ScenarioManager.UnitTest
         [TestCase]
         public void Parse_An_Empty_String()
         {
-            var result = reader.Parse(string.Empty);
+            var result = reader.Parse<Scenario>(string.Empty);
 
             Assert.IsNull(result);
         }
@@ -24,9 +25,10 @@ namespace EasyRepro.ScenarioManager.UnitTest
         [TestCase]
         public void Parse_A_Valid_String()
         {
-            var result = reader.Parse(@"{
+            var result = reader.Parse<Scenario>(@"{
   ""Name"": ""Create a new account record"",
   ""Description"": ""Create a new account record using EasyRepro"",
+  ""Entity"": ""Account"",
   ""Area"": ""Sales"",
   ""SubArea"": ""Accounts"",
   ""View"": ""Active Accounts"",
@@ -57,17 +59,32 @@ namespace EasyRepro.ScenarioManager.UnitTest
             Assert.AreEqual("Test Account", result.Commands[0].Data[0].Value);
         }
 
-        [TestCase(@"C:\Repository\Git\EasyRepro\EasyRepro.ScenarioManager\TestData\Sample.json")]
+        [TestCase(@"C:\Repository\Git\EasyRepro\EasyRepro.ScenarioManager\TestData\SampleAccount.json")]
         public void Parse_From_A_File(string filePath)
         {
-            var result = reader.ParseFromFile(filePath);
+            var result = reader.ParseTestDataFromFile(filePath);
 
             Assert.IsNotNull(result);
 
             Assert.IsNotEmpty(result.Name);
 
             Assert.AreEqual("Create a new account record", result.Name);
-            Assert.AreEqual("Test Account", result.Commands[0].Data[0].Value);
+            Assert.AreEqual("Test Account 12345", result.Commands[0].Data[0].Value);
+            Assert.AreEqual(AttributeType.Text, result.Commands[0].Data[0].Type);
+        }
+
+        [TestCase(@"C:\Repository\Git\EasyRepro\EasyRepro.ScenarioManager\TestData\SampleContact.json")]
+        public void Parse_From_A_File_With_Composite_Key(string filePath)
+        {
+            var result = reader.ParseTestDataFromFile(filePath);
+
+            Assert.IsNotNull(result);
+
+            Assert.IsNotEmpty(result.Commands[0].Data[0].Fields[0].Value);
+
+            Assert.AreEqual("Create a new contact record", result.Name);
+            Assert.AreEqual("Test Demo Persona", result.Commands[0].Data[0].Fields[0].Value + " " + 
+                result.Commands[0].Data[0].Fields[1].Value);
         }
     }
 }
